@@ -9,6 +9,7 @@ services:
     - "5000:3000"
     links:
       - mongo
+      - rabbitmq
     volumes:
       - .:/app
   mongo:
@@ -18,3 +19,9 @@ services:
       - "27018:27017"
     logging:
       driver: none
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
